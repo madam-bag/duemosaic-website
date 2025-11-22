@@ -1,6 +1,5 @@
 .home-page {
-  min-height: calc(100vh - 80px);
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 .home-container {
@@ -9,10 +8,71 @@
   padding: 0 40px;
 }
 
+.services-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.about-section {
+  padding: 100px 0;
+  background: #fafafa;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #1a1a1a;
+  margin: 0 0 50px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.subsection-title {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #8b7355;
+  margin: 60px 0 30px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.section-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
 @media (max-width: 768px) {
   .home-container {
     padding: 0 20px;
   }
+
+  .services-section,
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .subsection-title {
+    font-size: 24px;
+    margin: 40px 0 20px 0;
+  }
+
+  .section-content {
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left;
+  }
 }
-
-
