@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "name": "ES House in Saint Nazaire, France",
+    "slug": "_ES_House_in_Saint_Nazaire,_France",
+    "mainImage": "/images/1-_ES_House_in_Saint_Nazaire,_France/Esma_house_car.JPG",
+    "images": [
+      "/images/1-_ES_House_in_Saint_Nazaire,_France/Esma_house_car.JPG",
+      "/images/1-_ES_House_in_Saint_Nazaire,_France/PLAN.jpg"
+    ],
+    "folder": "1-_ES_House_in_Saint_Nazaire,_France",
+    "location": "Saint Nazaire, France",
+    "city": "Saint Nazaire",
+    "year": "2023",
+    "surface": "250 m²",
+    "client": "Private Client",
+    "status": "Completed",
+    "propertyType": "Residential"
+  },
+  {
+    "id": 2,
+    "name": "DR House Renovation in Wellen, Germany",
+    "slug": "_DR_house_renovation_in_Wellen,_Germany",
+    "mainImage": "/images/2-_DR_house_renovation_in_Wellen,_Germany/1.jpeg",
+    "images": [
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/1.jpeg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/2a.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/2aa.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/3a.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/4a.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/5a.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/6a.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/wellen1.jpg",
+      "/images/2-_DR_house_renovation_in_Wellen,_Germany/wellen2.jpg"
+    ],
+    "folder": "2-_DR_house_renovation_in_Wellen,_Germany",
+    "location": "Wellen, Germany",
+    "city": "Wellen",
+    "year": "2022",
+    "surface": "180 m²",
+    "client": "Private Client",
+    "status": "Completed",
+    "propertyType": "Renovation"
+  },
+  {
+    "id": 3,
+    "name": "Row Houses in Mamer, Luxembourg",
+    "slug": "Row_houses_in_Mamer,_Luxembourg",
+    "mainImage": "/images/3-Row_houses_in_Mamer,_Luxembourg/s1.jpg",
+    "images": [
+      "/images/3-Row_houses_in_Mamer,_Luxembourg/s1.jpg",
+      "/images/3-Row_houses_in_Mamer,_Luxembourg/s2.jpg",
+      "/images/3-Row_houses_in_Mamer,_Luxembourg/s3.jpg"
+    ],
+    "folder": "3-Row_houses_in_Mamer,_Luxembourg",
+    "location": "Mamer, Luxembourg",
+    "city": "Mamer",
+    "year": "2024",
+    "surface": "450 m²",
+    "client": "Development Company",
+    "status": "In Progress",
+    "propertyType": "Residential"
+  },
+  {
+    "id": 4,
+    "name": "Villa in Luxembourg",
+    "slug": "Villa_in_Luxembourg",
+    "mainImage": "/images/4-Villa_in_Luxembourg/1_maison_sketch.png",
+    "images": [
+      "/images/4-Villa_in_Luxembourg/1_maison_sketch.png"
+    ],
+    "folder": "4-Villa_in_Luxembourg",
+    "location": "Luxembourg City",
+    "city": "Luxembourg",
+    "year": "2023",
+    "surface": "320 m²",
+    "client": "Private Client",
+    "status": "Completed",
+    "propertyType": "Residential"
+  },
+  {
+    "id": 5,
+    "name": "DE Villa in Junglister, Luxembourg",
+    "slug": "DE_Villa_in_Junglister,_Luxembourg",
+    "mainImage": "/images/5-DE_Villa_in_Junglister,_Luxembourg/h1.jpg",
+    "images": [
+      "/images/5-DE_Villa_in_Junglister,_Luxembourg/h1.jpg",
+      "/images/5-DE_Villa_in_Junglister,_Luxembourg/h2.jpg"
+    ],
+    "folder": "5-DE_Villa_in_Junglister,_Luxembourg",
+    "location": "Junglister, Luxembourg",
+    "city": "Luxembourg",
+    "year": "2022",
+    "surface": "280 m²",
+    "client": "Private Client",
+    "status": "Completed",
+    "propertyType": "Residential"
+  },
+  {
+    "id": 6,
+    "name": "Techno Center Coworking Office Space in Istanbul, Turkey",
+    "slug": "Techno_center_coworking_office_space_in_Istanbul,_Turkey",
+    "mainImage": "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t1.jpg",
+    "images": [
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t1.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t2.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t3.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t4.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t5.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t6.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t8.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t9.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t10.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t11.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t12.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t13.jpg"
+    ],
+    "folder": "6-Techno_center_coworking_office_space_in_Istanbul,_Turkey",
+    "location": "Istanbul, Turkey",
+    "city": "Istanbul",
+    "year": "2023",
+    "surface": "850 m²",
+    "client": "Techno Center",
+    "status": "Completed",
+    "propertyType": "Commercial"
+  },
+  {
+    "id": 7,
+    "name": "Haskoy",
+    "slug": "_haskoy",
+    "mainImage": "/images/7-_haskoy/h1.jpg",
+    "images": [
+      "/images/7-_haskoy/h1.jpg",
+      "/images/7-_haskoy/h2.jpg",
+      "/images/7-_haskoy/h3.jpg",
+      "/images/7-_haskoy/h4.jpg",
+      "/images/7-_haskoy/h5.jpg",
+      "/images/7-_haskoy/h6.jpg",
+      "/images/7-_haskoy/h7.jpg",
+      "/images/7-_haskoy/h8.jpg",
+      "/images/7-_haskoy/h9.jpg"
+    ],
+    "folder": "7-_haskoy",
+    "location": "Haskoy, Turkey",
+    "city": "Istanbul",
+    "year": "2024",
+    "surface": "600 m²",
+    "client": "Private Client",
+    "status": "In Progress",
+    "propertyType": "Residential"
+  },
+  {
+    "id": 8,
+    "name": "BS Office, Luxembourg",
+    "slug": "BS_Office,_Luxembourg",
+    "mainImage": "/images/8-BS_Office,_Luxembourg/1.jpg",
+    "images": [
+      "/images/8-BS_Office,_Luxembourg/1.jpg",
+      "/images/8-BS_Office,_Luxembourg/2.jpg",
+      "/images/8-BS_Office,_Luxembourg/2.png",
+      "/images/8-BS_Office,_Luxembourg/3.jpg",
+      "/images/8-BS_Office,_Luxembourg/bs_office_1a.jpg"
+    ],
+    "folder": "8-BS_Office,_Luxembourg",
+    "location": "Luxembourg City, Luxembourg",
+    "city": "Luxembourg",
+    "year": "2023",
+    "surface": "520 m²",
+    "client": "BS Corporation",
+    "status": "Completed",
+    "propertyType": "Commercial"
+  },
+  {
+    "id": 9,
+    "name": "Vega House Restaurant in Mainz, Germany",
+    "slug": "Vega_House_Restaurant_in_Mainz,_Germany",
+    "mainImage": "/images/9-Vega_House_Restaurant_in_Mainz,_Germany/10.jpg",
+    "images": [
+      "/images/9-Vega_House_Restaurant_in_Mainz,_Germany/10.jpg",
+      "/images/9-Vega_House_Restaurant_in_Mainz,_Germany/8.jpg"
+    ],
+    "folder": "9-Vega_House_Restaurant_in_Mainz,_Germany",
+    "location": "Mainz, Germany",
+    "city": "Mainz",
+    "year": "2022",
+    "surface": "180 m²",
+    "client": "Vega House",
+    "status": "Completed",
+    "propertyType": "Commercial"
+  }
+]

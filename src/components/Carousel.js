@@ -1,47 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Carousel.css';
 
-// Easy to change: Update this array with your image paths
-// Paths are relative to the public folder
-const carouselImages = [
-  '/images/8-BS_Office,_Luxembourg/bs_office_1a.jpg',
-  '/images/4-Villa_in_Luxembourg/1_maison_sketch.png',
-  '/images/3-Row_houses_in_Mamer,_Luxembourg/s1.jpg',
-  '/images/9-Vega_House_Restaurant_in_Mainz,_Germany/10.jpg',
-  '/images/1-_ES_House_in_Saint_Nazaire,_France/Esma_house_car.JPG',
-];
-
-function Carousel() {
+function Carousel({ images = [], autoPlayInterval = 3000 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef(null);
+
+  const startTimer = () => {
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    
+    // Only start timer if there are images and autoPlayInterval is set
+    if (images.length > 0 && autoPlayInterval > 0) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, autoPlayInterval);
+    }
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
-    }, 3000); // Change slide every 3 seconds (faster)
-
-    return () => clearInterval(interval);
-  }, []);
+    startTimer();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images.length, autoPlayInterval]);
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
+    startTimer(); // Reset timer when manually navigating
   };
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
+    startTimer(); // Reset timer when manually navigating
   };
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
+    startTimer(); // Reset timer when manually navigating
   };
+
+  if (!images || images.length === 0) {
+    return null;
+  }
 
   return (
     <div className="carousel">
       <div className="carousel-container">
-        {carouselImages.map((image, index) => (
+        {images.map((image, index) => (
           <div
             key={index}
             className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}
@@ -60,27 +74,30 @@ function Carousel() {
       </div>
       
       {/* Navigation arrows */}
-      <button className="carousel-arrow carousel-arrow-left" onClick={goToPrevious}>
-        ‹
-      </button>
-      <button className="carousel-arrow carousel-arrow-right" onClick={goToNext}>
-        ›
-      </button>
+      {images.length > 1 && (
+        <>
+          <button className="carousel-arrow carousel-arrow-left" onClick={goToPrevious}>
+            ‹
+          </button>
+          <button className="carousel-arrow carousel-arrow-right" onClick={goToNext}>
+            ›
+          </button>
 
-      {/* Dots indicator */}
-      <div className="carousel-dots">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+          {/* Dots indicator */}
+          <div className="carousel-dots">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
 
 export default Carousel;
-

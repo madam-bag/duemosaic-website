@@ -1,0 +1,128 @@
+.project-detail-page {
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 80px;
+  background: #fff;
+}
+
+.project-detail-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.project-detail-header {
+  text-align: center;
+  padding-top: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 40px;
+}
+
+.project-detail-title {
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #1a1a1a;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.project-info-section {
+  padding: 60px 0;
+  background: #fafafa;
+  margin-top: 60px;
+}
+
+.project-info-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.project-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.project-info-item {
+  flex: 1;
+  min-width: 150px;
+  padding: 25px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.project-info-item:last-child {
+  border-right: none;
+}
+
+.project-info-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8b7355;
+  margin-bottom: 12px;
+}
+
+.project-info-value {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .project-detail-container {
+    padding: 0 20px;
+  }
+
+  .project-detail-header {
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 50px;
+  }
+
+  .project-detail-title {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .project-info-section {
+    padding: 50px 0;
+    margin-top: 40px;
+  }
+
+  .project-info-container {
+    padding: 0 20px;
+  }
+
+  .project-info-grid {
+    flex-direction: column;
+  }
+
+  .project-info-item {
+    flex: 1;
+    min-width: 100%;
+    padding: 20px 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .project-info-item:last-child {
+    border-bottom: none;
+  }
+
+  .project-info-label {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .project-info-value {
+    font-size: 16px;
+  }
+}

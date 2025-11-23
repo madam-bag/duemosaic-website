@@ -1,0 +1,23 @@
+{
+  "short_name": "Due Mosaic Architects",
+  "name": "Due Mosaic Architects - Innovative Architecture & Design",
+  "description": "High-end architecture studio delivering innovative design solutions for residential, commercial, and industrial projects in Luxembourg, Germany, France, and Turkey.",
+  "icons": [
+    {
+      "src": "images/webpage-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/webpage-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1a1a1a",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary"
+}
+

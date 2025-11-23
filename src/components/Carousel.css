@@ -1,9 +1,9 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100vh;
   overflow: hidden;
-  margin-top: 80px; /* Account for fixed navigation */
+  margin-top: 0;
   z-index: 1;
 }
 
@@ -108,8 +108,8 @@
 
 @media (max-width: 768px) {
   .carousel {
-    height: calc(100vh - 70px);
-    margin-top: 70px;
+    height: 100vh;
+    margin-top: 0;
   }
 
   .carousel-arrow {

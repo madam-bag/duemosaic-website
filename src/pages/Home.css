@@ -9,13 +9,13 @@
 }
 
 .services-section {
-  padding: 100px 0;
+  padding: 120px 0;
   background: #fff;
 }
 
-.about-section {
-  padding: 100px 0;
-  background: #fafafa;
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
 }
 
 .section-title {
@@ -23,9 +23,195 @@
   font-weight: 300;
   letter-spacing: 4px;
   color: #1a1a1a;
-  margin: 0 0 50px 0;
+  margin: 0 0 30px 0;
   text-transform: uppercase;
+}
+
+.services-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #666;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.service-card {
+  background: #fafafa;
+  padding: 25px 40px;
+  border-radius: 4px;
   text-align: center;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #8b7355, transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(139, 115, 85, 0.2);
+  background: #fff;
+}
+
+.service-icon {
+  font-size: 48px;
+  margin-bottom: 18px;
+  display: block;
+  transition: transform 0.3s ease;
+  filter: grayscale(0.3);
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.15) rotate(5deg);
+  filter: grayscale(0);
+}
+
+.service-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+}
+
+.service-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+
+.projects-cta-section {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0 L100 100 M100 0 L0 100" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.projects-cta-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-cta-title {
+  font-size: 56px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: #fff;
+  margin: 0 0 25px 0;
+  text-transform: uppercase;
+}
+
+.projects-cta-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ccc;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+.projects-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 50px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+  z-index: 0;
+}
+
+.projects-cta-button:hover::before {
+  left: 0;
+}
+
+.projects-cta-button:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.projects-cta-button .arrow {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-cta-button:hover .arrow {
+  transform: translateX(5px);
+}
+
+.projects-cta-button span:not(.arrow) {
+  position: relative;
+  z-index: 1;
+}
+
+.about-section {
+  padding: 100px 0;
+  background: #fafafa;
 }
 
 .subsection-title {
@@ -49,20 +235,75 @@
   text-align: justify;
 }
 
+@media (max-width: 968px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .home-container {
     padding: 0 20px;
   }
 
   .services-section,
-  .about-section {
+  .about-section,
+  .projects-cta-section {
     padding: 60px 0;
+  }
+
+  .projects-cta-title {
+    font-size: 36px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .projects-cta-description {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .projects-cta-button {
+    padding: 16px 40px;
+    font-size: 14px;
+  }
+
+  .services-header {
+    margin-bottom: 50px;
   }
 
   .section-title {
     font-size: 32px;
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+  }
+
+  .services-intro {
+    font-size: 16px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 40px;
+  }
+
+  .service-card {
+    padding: 25px 30px;
+  }
+
+  .service-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .service-title {
+    font-size: 18px;
+  }
+
+  .service-description {
+    font-size: 13px;
   }
 
   .subsection-title {

@@ -3,11 +3,21 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  z-index: 9999;
+  border-bottom: none;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+}
+
+.navigation.scrolled {
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -22,19 +32,19 @@
 
 .nav-logo {
   text-decoration: none;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #1a1a1a;
-  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
 }
 
 .nav-logo:hover {
-  color: #8b7355;
+  opacity: 0.8;
 }
 
-.logo-text {
-  position: relative;
+.logo-image {
+  height: 62.5px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -49,7 +59,7 @@
   text-decoration: none;
   color: #333;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   position: relative;
@@ -95,8 +105,8 @@
     font-size: 13px;
   }
 
-  .nav-logo {
-    font-size: 20px;
+  .logo-image {
+    height: 50px;
   }
 }
 

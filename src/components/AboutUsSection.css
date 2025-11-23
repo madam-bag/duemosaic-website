@@ -1,0 +1,59 @@
+.about-us-section {
+  padding: 100px 0;
+  background: #fafafa;
+}
+
+.about-us-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-title {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #1a1a1a;
+  margin: 0 0 50px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.section-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  text-align: justify;
+}
+
+.section-content:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .about-us-section {
+    padding: 60px 0;
+  }
+
+  .about-us-container {
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .section-content {
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+}
+

@@ -1,0 +1,24 @@
+{
+  "companyName": "Due Mosaic Architects",
+  "email": "duemosaicarchitects@gmail.com",
+  "phones": [
+    {
+      "number": "+352 621 654 124",
+      "tel": "+352621654124"
+    },
+    {
+      "number": "+49 176 84036754",
+      "tel": "+4917684036754"
+    }
+  ],
+  "address": {
+    "line1": "57 Avenue de la Gare",
+    "line2": "L-1611 Luxembourg",
+    "googleMapsUrl": "https://maps.app.goo.gl/9FZZ2HyqbJwFdinc8"
+  },
+  "instagram": {
+    "handle": "@duemosaic",
+    "url": "https://www.instagram.com/duemosaic"
+  }
+}
+
