@@ -11,6 +11,7 @@ const homeCarouselImages = [
   '/images/1-_ES_House_in_Saint_Nazaire,_France/Esma_house_car.JPG',
   '/images/5-DE_Villa_in_Junglister,_Luxembourg/h1.jpg',
   '/images/5-DE_Villa_in_Junglister,_Luxembourg/h2.jpg',
+  '/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/image-tekno.JPG',
 ];
 
 function HomeCarousel() {

@@ -63,7 +63,12 @@ function Carousel({ images = [], autoPlayInterval = 3000 }) {
           >
             <img 
               src={image} 
-              alt={`Carousel slide ${index + 1}`}
+              alt={image.includes('Luxembourg') ? `Architecture project in Luxembourg - Slide ${index + 1}` : 
+                   image.includes('France') ? `Architecture project in France - Slide ${index + 1}` :
+                   image.includes('Germany') ? `Architecture project in Germany - Slide ${index + 1}` :
+                   image.includes('Turkey') ? `Architecture project in Turkey - Slide ${index + 1}` :
+                   `Architecture project - Slide ${index + 1}`}
+              loading="lazy"
               onError={(e) => {
                 console.error(`Failed to load image: ${image}`);
                 e.target.style.display = 'none';

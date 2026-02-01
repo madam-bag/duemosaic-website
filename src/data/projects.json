@@ -10,12 +10,11 @@
     ],
     "folder": "1-_ES_House_in_Saint_Nazaire,_France",
     "location": "Saint Nazaire, France",
-    "city": "Saint Nazaire",
-    "year": "2023",
-    "surface": "250 m²",
-    "client": "Private Client",
+    "year": "2022",
+    "surface": "130 m²",
+    "client": "Private",
     "status": "Completed",
-    "propertyType": "Residential"
+    "propertyType": "House"
   },
   {
     "id": 2,
@@ -35,12 +34,11 @@
     ],
     "folder": "2-_DR_house_renovation_in_Wellen,_Germany",
     "location": "Wellen, Germany",
-    "city": "Wellen",
-    "year": "2022",
-    "surface": "180 m²",
-    "client": "Private Client",
+    "year": "2024",
+    "surface": "250m²",
+    "client": "Private",
     "status": "Completed",
-    "propertyType": "Renovation"
+    "propertyType": "House"
   },
   {
     "id": 3,
@@ -54,10 +52,9 @@
     ],
     "folder": "3-Row_houses_in_Mamer,_Luxembourg",
     "location": "Mamer, Luxembourg",
-    "city": "Mamer",
     "year": "2024",
-    "surface": "450 m²",
-    "client": "Development Company",
+    "surface": "400 m²",
+    "client": "Property Developer",
     "status": "In Progress",
     "propertyType": "Residential"
   },
@@ -71,12 +68,11 @@
     ],
     "folder": "4-Villa_in_Luxembourg",
     "location": "Luxembourg City",
-    "city": "Luxembourg",
     "year": "2023",
     "surface": "320 m²",
-    "client": "Private Client",
+    "client": "Private",
     "status": "Completed",
-    "propertyType": "Residential"
+    "propertyType": "House"
   },
   {
     "id": 5,
@@ -89,11 +85,10 @@
     ],
     "folder": "5-DE_Villa_in_Junglister,_Luxembourg",
     "location": "Junglister, Luxembourg",
-    "city": "Luxembourg",
     "year": "2022",
-    "surface": "280 m²",
-    "client": "Private Client",
-    "status": "Completed",
+    "surface": "250 m²",
+    "client": "Property Developer",
+    "status": "In Progress",
     "propertyType": "Residential"
   },
   {
@@ -113,20 +108,20 @@
       "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t10.jpg",
       "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t11.jpg",
       "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t12.jpg",
-      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t13.jpg"
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/t13.jpg",
+      "/images/6-Techno_center_coworking_office_space_in_Istanbul,_Turkey/image-tekno.JPG"
     ],
     "folder": "6-Techno_center_coworking_office_space_in_Istanbul,_Turkey",
     "location": "Istanbul, Turkey",
-    "city": "Istanbul",
     "year": "2023",
-    "surface": "850 m²",
+    "surface": "1200 m²",
     "client": "Techno Center",
     "status": "Completed",
-    "propertyType": "Commercial"
+    "propertyType": "Coworking Space"
   },
   {
     "id": 7,
-    "name": "Haskoy",
+    "name": "Public Library in Istanbul, Turkey",
     "slug": "_haskoy",
     "mainImage": "/images/7-_haskoy/h1.jpg",
     "images": [
@@ -141,13 +136,12 @@
       "/images/7-_haskoy/h9.jpg"
     ],
     "folder": "7-_haskoy",
-    "location": "Haskoy, Turkey",
-    "city": "Istanbul",
-    "year": "2024",
-    "surface": "600 m²",
-    "client": "Private Client",
-    "status": "In Progress",
-    "propertyType": "Residential"
+    "location": "Istanbul, Turkey",
+    "year": "2022",
+    "surface": "550 m²",
+    "client": "Public",
+    "status": "Completed",
+    "propertyType": "Library"
   },
   {
     "id": 8,
@@ -163,12 +157,11 @@
     ],
     "folder": "8-BS_Office,_Luxembourg",
     "location": "Luxembourg City, Luxembourg",
-    "city": "Luxembourg",
-    "year": "2023",
-    "surface": "520 m²",
-    "client": "BS Corporation",
+    "year": "2024",
+    "surface": "150 m²",
+    "client": "Private",
     "status": "Completed",
-    "propertyType": "Commercial"
+    "propertyType": "Office"
   },
   {
     "id": 9,
@@ -182,9 +175,9 @@
     "folder": "9-Vega_House_Restaurant_in_Mainz,_Germany",
     "location": "Mainz, Germany",
     "city": "Mainz",
-    "year": "2022",
-    "surface": "180 m²",
-    "client": "Vega House",
+    "year": "2023",
+    "surface": "250 m²",
+    "client": "Private",
     "status": "Completed",
     "propertyType": "Commercial"
   }

@@ -28,6 +28,7 @@
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  flex-wrap: nowrap;
 }
 
 .nav-logo {
@@ -53,6 +54,8 @@
   margin: 0;
   padding: 0;
   gap: 50px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .nav-link {
@@ -65,6 +68,8 @@
   position: relative;
   transition: color 0.3s ease;
   padding: 5px 0;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-link::after {
@@ -91,22 +96,128 @@
   color: #8b7355;
 }
 
+.language-selector {
+  position: relative;
+  margin-left: 20px;
+}
+
+.language-button {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.language-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #8b7355;
+}
+
+.language-code {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.language-arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.language-selector:hover .language-arrow {
+  transform: rotate(180deg);
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  min-width: 150px;
+  z-index: 10000;
+}
+
+.language-option {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.2s ease;
+  font-weight: 500;
+}
+
+.language-option:hover {
+  background: rgba(139, 115, 85, 0.1);
+}
+
+.language-option.active {
+  background: rgba(139, 115, 85, 0.15);
+  color: #8b7355;
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 20px;
     height: 70px;
   }
 
+  .nav-logo {
+    flex-shrink: 0;
+  }
+
   .nav-menu {
-    gap: 25px;
+    flex: 1;
+    justify-content: space-around;
+    gap: 0;
+    margin-left: 15px;
   }
 
   .nav-link {
-    font-size: 13px;
+    font-size: 11px;
+    flex: 1;
+    text-align: center;
   }
 
   .logo-image {
-    height: 50px;
+    height: 35px;
+  }
+
+  .language-selector {
+    margin-left: 8px;
+  }
+
+  .language-button {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .language-menu {
+    min-width: 120px;
+    right: -10px;
+  }
+
+  .language-option {
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }
 
