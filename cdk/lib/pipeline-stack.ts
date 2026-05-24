@@ -28,6 +28,7 @@ export class PipelineStack extends cdk.Stack {
           GITHUB_BRANCH,
           {
             connectionArn: CODE_STAR_CONNECTION_ARN,
+            triggerOnPush: true,
           }
         ),
         installCommands: [
