@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 
 // CodeStar Connection Configuration
-export const CODE_STAR_CONNECTION_ARN = 'arn:aws:codestar-connections:us-east-1:123456789012:connection/abc123...';
+export const CODE_STAR_CONNECTION_ARN = 'arn:aws:codeconnections:us-east-1:210602314855:connection/2b41b7f8-4ce0-4248-8554-3e3f9ac605cd';
 
 // GitHub Repository Configuration
 export const GITHUB_OWNER = 'madam-bag';
@@ -15,9 +15,12 @@ export const PIPELINE_NAME = 'WebsitePipeline';
 export const CDK_DIRECTORY = 'cdk';
 export const WEBSITE_ARTIFACTS_PATH = '../build'; // Relative to CDK directory
 
+// DNS Configuration
+export const HOSTED_ZONE_NAME = 'duemosaic-architects.com';
+
 // Environment Configuration
 export const env: cdk.Environment = {
-  account: '123456789012',
+  account: '210602314855',
   region: 'us-east-1',
 };
 
