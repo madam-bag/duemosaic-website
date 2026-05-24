@@ -33,12 +33,10 @@ export class PipelineStack extends cdk.Stack {
           // Install website dependencies at root
           'npm install',
           // Install CDK dependencies
-          `cd ${CDK_DIRECTORY}`,
-          'npm install',
+          `cd ${CDK_DIRECTORY} && npm install`,
         ],
         commands: [
-          'npm run build',
-          'npx cdk synth',
+          `cd ${CDK_DIRECTORY} && npx cdk synth`,
         ],
         primaryOutputDirectory: `${CDK_DIRECTORY}/cdk.out`,
       }),
