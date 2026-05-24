@@ -88,6 +88,8 @@ export class WebsiteStack extends cdk.Stack {
       sources: [s3deploy.Source.asset(artifactsPath)],
       destinationBucket: websiteBucket,
       distribution: distribution,
+      // Allocate more disk space for the copy extraction (Up to 10240 MiB)
+      ephemeralStorageSize: cdk.Size.mebibytes(1024),
       // Invalidate CloudFront cache on every deployment
       distributionPaths: ['/*'],
       cacheControl: [
