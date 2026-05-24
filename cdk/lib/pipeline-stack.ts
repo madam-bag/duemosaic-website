@@ -39,6 +39,7 @@ export class PipelineStack extends cdk.Stack {
         commands: [
           // Build the website at root
           'npm run build',
+          'echo "$(pwd)" && echo "$(ls -al)"',
           // Build and synth CDK
           `cd ${CDK_DIRECTORY}`,
           'npm run build',
