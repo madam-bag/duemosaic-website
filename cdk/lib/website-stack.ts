@@ -113,12 +113,12 @@ export class WebsiteStack extends cdk.Stack {
     return [
       // 1. Deploy all static assets (JS, CSS, images) with heavy caching
       // Exclude the index.html so it doesn't get the wrong headers
-      new s3deploy.BucketDeployment(this, 'AssetDeployment', {
+      new s3deploy.BucketDeployment(this, 'AllAssetsDeployment', {
         sources: [
           s3deploy.Source.asset(artifactsPath, {
             exclude: ['index.html'], 
             // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index-only',
+            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-all',
           }),
         ],
         destinationBucket: websiteBucket,
@@ -136,7 +136,7 @@ export class WebsiteStack extends cdk.Stack {
           s3deploy.Source.asset(artifactsPath, {
             exclude: ['**/*', '!index.html'], // Exclude everything, but negate index.html
             // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index-only',
+            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index',
           }),
         ],
         destinationBucket: websiteBucket,
