@@ -81,10 +81,8 @@ export class WebsiteStack extends cdk.Stack {
       ],
     });
 
-    // Deploy website artifacts to S3 bucket
-    // Using timestamp in deployment ID to ensure invalidation on every deployment
-    const deploymentTimestamp = new Date().getTime().toString();
-    new s3deploy.BucketDeployment(this, `WebsiteDeployment-${deploymentTimestamp}`, {
+    // Deploy website artifacts to S3 buckets
+    new s3deploy.BucketDeployment(this, 'WebsiteDeployment', {
       sources: [s3deploy.Source.asset(artifactsPath)],
       destinationBucket: websiteBucket,
       distribution: distribution,
