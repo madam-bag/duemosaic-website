@@ -61,3 +61,8 @@ This will serve your production build at `http://localhost:3000` (or another por
    npm start
    ```
 
+
+# Pipeline deployment progress
+
+When you push a commit, pipeline shows deployment progress here: https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/WebsitePipeline/view?region=us-east-1
+

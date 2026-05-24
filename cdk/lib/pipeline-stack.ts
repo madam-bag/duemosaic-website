@@ -21,7 +21,7 @@ export class PipelineStack extends cdk.Stack {
     // Create the pipeline
     const pipeline = new pipelines.CodePipeline(this, 'Pipeline', {
       pipelineName: PIPELINE_NAME,
-      selfMutation: false,
+      selfMutation: true,
       synth: new pipelines.ShellStep('Synth', {
         input: pipelines.CodePipelineSource.connection(
           `${GITHUB_OWNER}/${GITHUB_REPO}`,
