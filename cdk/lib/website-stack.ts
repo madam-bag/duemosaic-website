@@ -61,6 +61,7 @@ export class WebsiteStack extends cdk.Stack {
         compress: true,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
       },
+      priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
       domainNames: [HOSTED_ZONE_NAME],
       certificate: certificate,
       defaultRootObject: 'index.html',
