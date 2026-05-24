@@ -16,7 +16,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div className="App">
+        <div className="App" id="app-container">
           <SEO />
           <Navigation />
           <Routes>
