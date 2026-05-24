@@ -13,10 +13,6 @@ export class WebsiteStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // Get the website artifacts path (relative to CDK directory where cdk deploy is run)
-    // WEBSITE_ARTIFACTS_PATH is '../build' which resolves to the build directory at repo root
-    const artifactsPath = WEBSITE_ARTIFACTS_PATH;
-
     // Create S3 bucket for website origin
     const websiteBucket = new s3.Bucket(this, 'WebsiteBucket', {
       bucketName: `${this.stackName.toLowerCase()}-website-${this.account}`,
@@ -76,25 +72,12 @@ export class WebsiteStack extends cdk.Stack {
           httpStatus: 404,
           responseHttpStatus: 200,
           responsePagePath: '/index.html',
-          ttl: cdk.Duration.minutes(5),
+          ttl: cdk.Duration.minutes(0),
         },
       ],
     });
 
-    // Deploy website artifacts to S3 buckets
-    new s3deploy.BucketDeployment(this, 'WebsiteDeployment', {
-      sources: [s3deploy.Source.asset(artifactsPath)],
-      destinationBucket: websiteBucket,
-      distribution: distribution,
-      // Allocate more disk space for the copy extraction (Up to 10240 MiB)
-      ephemeralStorageSize: cdk.Size.mebibytes(1024),
-      // Invalidate CloudFront cache on every deployment
-      distributionPaths: ['/*'],
-      cacheControl: [
-        s3deploy.CacheControl.maxAge(cdk.Duration.days(365)),
-        s3deploy.CacheControl.immutable(),
-      ],
-    });
+    this.createAssetDeployments(distribution, websiteBucket);
 
     // Create Route53 A record pointing to CloudFront distribution
     new route53.ARecord(this, 'WebsiteARecord', {
@@ -120,5 +103,46 @@ export class WebsiteStack extends cdk.Stack {
       value: `https://${HOSTED_ZONE_NAME}`,
       description: 'Website URL',
     });
+  }
+
+  private createAssetDeployments(distribution: cloudfront.Distribution, websiteBucket: s3.Bucket): s3deploy.BucketDeployment[] {
+    // Get the website artifacts path (relative to CDK directory where cdk deploy is run)
+    // WEBSITE_ARTIFACTS_PATH is '../build' which resolves to the build directory at repo root
+    const artifactsPath = WEBSITE_ARTIFACTS_PATH;
+
+    return [
+      // 1. Deploy all static assets (JS, CSS, images) with heavy caching
+      // Exclude the index.html so it doesn't get the wrong headers
+      new s3deploy.BucketDeployment(this, 'AssetDeployment', {
+        sources: [
+          s3deploy.Source.asset(artifactsPath, {
+            exclude: ['index.html'], 
+          }),
+        ],
+        destinationBucket: websiteBucket,
+        cacheControl: [
+          s3deploy.CacheControl.maxAge(cdk.Duration.days(365)),
+          s3deploy.CacheControl.immutable(),
+        ],
+        ephemeralStorageSize: cdk.Size.mebibytes(1024),
+        memoryLimit: 1024,
+      }),
+      // 2. Deploy ONLY index.html with NO CACHE and trigger CloudFront invalidation
+      // We exclude everything *except* index.html using glob patterns
+      new s3deploy.BucketDeployment(this, 'EntrypointDeployment', {
+        sources: [
+          s3deploy.Source.asset(artifactsPath, {
+            exclude: ['**/*', '!index.html'], // Exclude everything, but negate index.html
+          }),
+        ],
+        destinationBucket: websiteBucket,
+        distribution: distribution, 
+        distributionPaths: ['/*'], 
+        cacheControl: [
+          s3deploy.CacheControl.noCache(),
+          s3deploy.CacheControl.mustRevalidate(),
+        ],
+      }),
+    ];
   }
 }

@@ -6,7 +6,8 @@
     "watch": "tsc -w",
     "cdk": "cdk",
     "synth": "npx cdk synth",
-    "deploy": "npx cdk deploy"
+    "deploy": "npx cdk deploy",
+    "list": "npx cdk list"
   },
   "devDependencies": {
     "@types/node": "^24.12.4",
