@@ -30,18 +30,12 @@ export class PipelineStack extends cdk.Stack {
           }
         ),
         installCommands: [
-          // 1. Install React website dependencies at the root
+          // 1. Install React website dependencies at the root and cdk inside
           'npm install',
-          // 2. Install CDK dependencies using --prefix (no 'cd' required!)
-          `npm install --prefix ${CDK_DIRECTORY}`,
         ],
         commands: [
-          // 1. Build your React frontend website at root
           'npm run build', 
-          // 2. Compile TypeScript inside the CDK folder
-          `npm run build --prefix ${CDK_DIRECTORY}`,
-          // 3. Synth pointing directly to the app execution string
-          `npx --prefix ${CDK_DIRECTORY} cdk synth --app "node ${CDK_DIRECTORY}/bin/cdk.js"`,
+          `npm run cdk:synth`,
         ],
         primaryOutputDirectory: `${CDK_DIRECTORY}/cdk.out`,
       }),

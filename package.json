@@ -2,6 +2,10 @@
   "name": "website",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "cdk",
+    "."
+  ],
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -14,7 +18,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "npx serve -s build",
-    "generate-thumbnails": "node scripts/generate-thumbnails.js"
+    "generate-thumbnails": "node scripts/generate-thumbnails.js",
+    "cdk:build": "npm run build --workspace=cdk",
+    "cdk:synth": "npm run synth --workspace=cdk"
   },
   "devDependencies": {
     "sharp": "^0.33.0"
