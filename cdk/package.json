@@ -5,7 +5,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "cdk": "cdk",
-    "synth": "npx cdk synth"
+    "synth": "npx cdk synth",
+    "deploy": "npx cdk deploy"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
