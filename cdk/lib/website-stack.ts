@@ -40,11 +40,22 @@ export class WebsiteStack extends cdk.Stack {
       domainName: HOSTED_ZONE_NAME,
     });
 
+    // Hostnames the website should be served on. The first entry is the
+    // primary/canonical hostname (used as the ACM cert's `domainName`); the
+    // rest become Subject Alternative Names on the cert, additional CloudFront
+    // aliases, and additional Route53 A records.
+    const websiteHostnames = [
+      HOSTED_ZONE_NAME,
+      `www.${HOSTED_ZONE_NAME}`,
+    ] as const;
+    const [primaryHostname, ...alternateHostnames] = websiteHostnames;
+
     // Create ACM certificate
     // Note: CloudFront requires certificates to be in us-east-1
     // If your stack is in a different region, you'll need to create the certificate separately in us-east-1
     const certificate = new acm.Certificate(this, 'Certificate', {
-      domainName: HOSTED_ZONE_NAME,
+      domainName: primaryHostname,
+      subjectAlternativeNames: [...alternateHostnames],
       validation: acm.CertificateValidation.fromDns(hostedZone),
     });
 
@@ -61,7 +72,7 @@ export class WebsiteStack extends cdk.Stack {
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
       },
       priceClass: cloudfront.PriceClass.PRICE_CLASS_100,
-      domainNames: [HOSTED_ZONE_NAME],
+      domainNames: [...websiteHostnames],
       certificate: certificate,
       defaultRootObject: 'index.html',
       errorResponses: [
@@ -82,14 +93,18 @@ export class WebsiteStack extends cdk.Stack {
 
     this.createAssetDeployments(distribution, websiteBucket);
 
-    // Create Route53 A record pointing to CloudFront distribution
-    new route53.ARecord(this, 'WebsiteARecord', {
-      zone: hostedZone,
-      recordName: HOSTED_ZONE_NAME,
-      target: route53.RecordTarget.fromAlias(
-        new route53targets.CloudFrontTarget(distribution)
-      ),
-    });
+    // Create a Route53 A record per hostname pointing to the CloudFront distribution
+    const cloudFrontAliasTarget = route53.RecordTarget.fromAlias(new route53targets.CloudFrontTarget(distribution));
+    for (const hostname of websiteHostnames) {
+      const constructIdSuffix = hostname === HOSTED_ZONE_NAME
+        ? 'Apex'
+        : hostname.replace(/\./g, '-');
+      new route53.ARecord(this, `WebsiteARecord-${constructIdSuffix}`, {
+        zone: hostedZone,
+        recordName: hostname,
+        target: cloudFrontAliasTarget,
+      });
+    }
 
     // Outputs
     new cdk.CfnOutput(this, 'DistributionId', {
@@ -103,7 +118,7 @@ export class WebsiteStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, 'WebsiteUrl', {
-      value: `https://${HOSTED_ZONE_NAME}`,
+      value: `https://${primaryHostname}`,
       description: 'Website URL',
     });
   }
