@@ -14,10 +14,13 @@ export class WebsiteStack extends cdk.Stack {
     super(scope, id, props);
 
     // Create S3 bucket for website origin
+    // NOTE: Do NOT set websiteIndexDocument/websiteErrorDocument here. Doing so makes
+    // bucket.isWebsite === true, which causes origins.S3Origin to switch to the public
+    // S3 website endpoint and silently ignore the OAI. With BlockPublicAccess.BLOCK_ALL
+    // that results in 403s for every request. SPA routing is handled by CloudFront's
+    // errorResponses below.
     const websiteBucket = new s3.Bucket(this, 'WebsiteBucket', {
       bucketName: `${this.stackName.toLowerCase()}-website-${this.account}`,
-      websiteIndexDocument: 'index.html',
-      websiteErrorDocument: 'index.html', // SPA fallback
       publicReadAccess: false, // CloudFront will access via OAI
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY, // Change to RETAIN for production
@@ -66,13 +69,13 @@ export class WebsiteStack extends cdk.Stack {
           httpStatus: 403,
           responseHttpStatus: 200,
           responsePagePath: '/index.html',
-          ttl: cdk.Duration.minutes(5),
+          ttl: cdk.Duration.seconds(0),
         },
         {
           httpStatus: 404,
           responseHttpStatus: 200,
           responsePagePath: '/index.html',
-          ttl: cdk.Duration.minutes(0),
+          ttl: cdk.Duration.seconds(0),
         },
       ],
     });
@@ -110,43 +113,55 @@ export class WebsiteStack extends cdk.Stack {
     // WEBSITE_ARTIFACTS_PATH is '../build' which resolves to the build directory at repo root
     const artifactsPath = WEBSITE_ARTIFACTS_PATH;
 
-    return [
-      // 1. Deploy all static assets (JS, CSS, images) with heavy caching
-      // Exclude the index.html so it doesn't get the wrong headers
-      new s3deploy.BucketDeployment(this, 'AllAssetsDeployment', {
-        sources: [
-          s3deploy.Source.asset(artifactsPath, {
-            exclude: ['index.html'], 
-            // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-all',
-          }),
-        ],
-        destinationBucket: websiteBucket,
-        cacheControl: [
-          s3deploy.CacheControl.maxAge(cdk.Duration.days(365)),
-          s3deploy.CacheControl.immutable(),
-        ],
-        ephemeralStorageSize: cdk.Size.mebibytes(1024),
-        memoryLimit: 1024,
-      }),
-      // 2. Deploy ONLY index.html with NO CACHE and trigger CloudFront invalidation
-      // We exclude everything *except* index.html using glob patterns
-      new s3deploy.BucketDeployment(this, 'EntrypointDeployment', {
-        sources: [
-          s3deploy.Source.asset(artifactsPath, {
-            exclude: ['**/*', '!index.html'], // Exclude everything, but negate index.html
-            // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-            assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index',
-          }),
-        ],
-        destinationBucket: websiteBucket,
-        distribution: distribution, 
-        distributionPaths: ['/*'], 
-        cacheControl: [
-          s3deploy.CacheControl.noCache(),
-          s3deploy.CacheControl.mustRevalidate(),
-        ],
-      }),
-    ];
+    // 1. Deploy all static assets (JS, CSS, images) with heavy caching
+    // Exclude the index.html so it doesn't get the wrong headers
+    // Keeps the default `prune: true` so stale hashed assets get cleaned up on each deploy.
+    const allAssetsDeployment = new s3deploy.BucketDeployment(this, 'AllAssetsDeployment', {
+      sources: [
+        s3deploy.Source.asset(artifactsPath, {
+          exclude: ['index.html'],
+          // Appending a different unique string ensures this generates a unique zip file inside cdk.out
+          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-all',
+        }),
+      ],
+      destinationBucket: websiteBucket,
+      cacheControl: [
+        s3deploy.CacheControl.maxAge(cdk.Duration.days(365)),
+        s3deploy.CacheControl.immutable(),
+      ],
+      ephemeralStorageSize: cdk.Size.mebibytes(1024),
+      memoryLimit: 1024,
+    });
+
+    // 2. Deploy ONLY index.html with NO CACHE and trigger CloudFront invalidation
+    // We exclude everything *except* index.html using glob patterns.
+    // `prune: false` is critical: this deployment's source contains only index.html,
+    // so with the default prune behavior it would delete every asset uploaded by
+    // AllAssetsDeployment above, leaving only index.html in the bucket.
+    const entrypointDeployment = new s3deploy.BucketDeployment(this, 'EntrypointDeployment', {
+      sources: [
+        s3deploy.Source.asset(artifactsPath, {
+          exclude: ['**/*', '!index.html'], // Exclude everything, but negate index.html
+          // Appending a different unique string ensures this generates a unique zip file inside cdk.out
+          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index',
+        }),
+      ],
+      destinationBucket: websiteBucket,
+      distribution: distribution,
+      distributionPaths: ['/*'],
+      prune: false,
+      cacheControl: [
+        s3deploy.CacheControl.noCache(),
+        s3deploy.CacheControl.mustRevalidate(),
+      ],
+    });
+
+    // Ensure assets land before index.html so AllAssetsDeployment's prune sweep
+    // (which would otherwise delete any stale index.html) runs first, and the
+    // CloudFront invalidation triggered by EntrypointDeployment happens once
+    // every new asset is already in place.
+    entrypointDeployment.node.addDependency(allAssetsDeployment);
+
+    return [allAssetsDeployment, entrypointDeployment];
   }
 }
