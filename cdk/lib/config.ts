@@ -2,7 +2,7 @@ import * as cdk from 'aws-cdk-lib';
 import * as path from 'path';
 
 // CodeStar Connection Configuration
-export const CODE_STAR_CONNECTION_ARN = 'arn:aws:codeconnections:us-east-1:210602314855:connection/2b41b7f8-4ce0-4248-8554-3e3f9ac605cd';
+export const CODE_STAR_CONNECTION_ARN = 'arn:aws:codeconnections:us-east-1:210602314855:connection/0f42cdf1-87bd-4fe7-bb2e-d68939d4d1c9';
 
 // GitHub Repository Configuration
 export const GITHUB_OWNER = 'madam-bag';
