@@ -121,7 +121,7 @@ export class WebsiteStack extends cdk.Stack {
         s3deploy.Source.asset(artifactsPath, {
           exclude: ['index.html'],
           // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-all',
+          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-all-assets',
         }),
       ],
       destinationBucket: websiteBucket,
@@ -143,7 +143,7 @@ export class WebsiteStack extends cdk.Stack {
         s3deploy.Source.asset(artifactsPath, {
           exclude: ['**/*', '!index.html'], // Exclude everything, but negate index.html
           // Appending a different unique string ensures this generates a unique zip file inside cdk.out
-          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index',
+          assetHash: cdk.FileSystem.fingerprint(artifactsPath) + '-index-only',
         }),
       ],
       destinationBucket: websiteBucket,
