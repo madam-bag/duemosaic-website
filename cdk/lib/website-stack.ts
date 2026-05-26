@@ -97,9 +97,9 @@ export class WebsiteStack extends cdk.Stack {
     const cloudFrontAliasTarget = route53.RecordTarget.fromAlias(new route53targets.CloudFrontTarget(distribution));
     for (const hostname of websiteHostnames) {
       const constructIdSuffix = hostname === HOSTED_ZONE_NAME
-        ? 'Apex'
-        : hostname.replace(/\./g, '-');
-      new route53.ARecord(this, `WebsiteARecord-${constructIdSuffix}`, {
+        ? ''
+        : ('-' + hostname.replace(/\./g, '-'));
+      new route53.ARecord(this, `WebsiteARecord${constructIdSuffix}`, {
         zone: hostedZone,
         recordName: hostname,
         target: cloudFrontAliasTarget,
